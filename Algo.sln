@@ -1,8 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-bigO", "00-bigO", "{2D911772-CEC2-445B-8C02-1E3EF2373D1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "00-bigO", "00-bigO\00-bigO.csproj", "{29DD6A77-4496-43A6-8B4A-534954FD2001}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{29DD6A77-4496-43A6-8B4A-534954FD2001} = {2D911772-CEC2-445B-8C02-1E3EF2373D1F}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29DD6A77-4496-43A6-8B4A-534954FD2001}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29DD6A77-4496-43A6-8B4A-534954FD2001}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29DD6A77-4496-43A6-8B4A-534954FD2001}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29DD6A77-4496-43A6-8B4A-534954FD2001}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
