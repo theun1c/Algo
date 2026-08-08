@@ -9,20 +9,29 @@
 // Input: s = ["H","a","n","n","a","h"]
 // Output: ["h","a","n","n","a","H"]
 
+// void ReverseString(char[] s)
+// {
+//     int left = 0;
+//     int right = s.Length - 1;
+//
+//     while (right > left)
+//     {
+//         (s[left], s[right]) = (s[right], s[left]); 
+//         left++;
+//         right--;
+//     }
+//
+//     Console.WriteLine(s);
+// }
+
+// perfect clean 
 void ReverseString(char[] s)
 {
-    int ptr1 = 0;
-    int ptr2 = s.Length - 1;
-
-    while (ptr2 > ptr1)
+    for (int l = 0, r = s.Length - 1; l < r; l++, r--)
     {
-        char temp = s[ptr1];
-        s[ptr1] = s[ptr2];
-        s[ptr2] = temp;
-        ptr1++;
-        ptr2--;
+        (s[l], s[r]) = (s[r], s[l]);
     }
-
+    
     Console.WriteLine(s);
 }
 
