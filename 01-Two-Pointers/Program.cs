@@ -175,3 +175,73 @@ IList<IList<int>> ThreeSum(int[] nums)
     return result;
 } 
 
+// 977. Squares of a Sorted Array
+// Example 1:
+// 
+// Input: nums = [-4,-1,0,3,10]
+// Output: [0,1,9,16,100]
+// Explanation: After squaring, the array becomes [16,1,0,9,100].
+// After sorting, it becomes [0,1,9,16,100].
+// 
+// Example 2:
+// 
+// Input: nums = [-7,-3,2,3,11]
+// Output: [4,9,9,49,121]
+
+int[] SortedSquares(int[] nums)
+{
+    int[] result = new int[nums.Length];
+    int len = nums.Length - 1;
+    for (int left = 0, right = nums.Length - 1; left <= right; len--)
+    {
+        if (nums[left] * nums[left] > nums[right] * nums[right])
+        {
+            result[len] = nums[left]*nums[left];
+            left++;
+        }
+        else
+        {
+            result[len] = nums[right]*nums[right];
+            right--;
+        }
+    }
+    
+    return result;
+}
+
+// 11. Container With Most Water
+// Input: height = [1,8,6,2,5,4,8,3,7]
+// Output: 49
+// Explanation: The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49.
+// 
+// Example 2:
+// 
+// Input: height = [1,1]
+// Output: 1
+
+int MaxArea(int[] height)
+{
+    int prev = 0;
+    int result = 0;
+    int width = 1;
+    for (int left = 0, right = height.Length - 1; left < right;)
+    {
+        if(Math.Abs(right) - Math.Abs(left) > 0)
+            width = right - left;
+        
+        if (height[left] > height[right])
+        {
+            prev = height[right] * width;
+            right--;
+        }
+        else
+        {
+            prev = height[left] * width;
+            left++;
+        }
+        
+        result = int.Max(result, prev);
+    }
+    
+    return result;
+}
