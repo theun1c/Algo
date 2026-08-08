@@ -63,17 +63,51 @@ ReverseString(['H','a','n','n','a','h']);
 
 bool IsPalindrome(string s)
 {
-     char[] letters = s.Where(char.IsLetterOrDigit).Select(char.ToLower).ToArray();
+    char[] letters = s.Where(char.IsLetterOrDigit).Select(char.ToLower).ToArray();
 
-     for (int l = 0, r = letters.Length - 1; l < r; l++, r--)
-     {
-         if(letters[l] != letters[r])
-             return false;
-     }
+    for (int l = 0, r = letters.Length - 1; l < r; l++, r--)
+    {
+        if(letters[l] != letters[r])
+            return false;
+    }
      
-     return true;
+    return true;
 }
 
 Console.WriteLine(IsPalindrome("A man, a plan, a canal: Panama"));
 Console.WriteLine(IsPalindrome("Race a car"));
 Console.WriteLine(IsPalindrome(" "));
+
+// 167. Two Sum II - Input Array Is Sorted
+// Example 1:
+//
+// Input: numbers = [2,7,11,15], target = 9
+// Output: [1,2]
+// Explanation: The sum of 2 and 7 is 9. Therefore, index1 = 1, index2 = 2. We return [1, 2].
+//
+//     Example 2:
+//
+// Input: numbers = [2,3,4], target = 6
+// Output: [1,3]
+// Explanation: The sum of 2 and 4 is 6. Therefore index1 = 1, index2 = 3. We return [1, 3].
+//
+//     Example 3:
+//
+// Input: numbers = [-1,0], target = -1
+// Output: [1,2]
+// Explanation: The sum of -1 and 0 is -1. Therefore index1 = 1, index2 = 2. We return [1, 2].
+
+// ooomg perfect sol
+int[] TwoSum(int[] numbers, int target) {
+    for (int l = 0, r = numbers.Length - 1; l < r; )
+    {
+        if (numbers[l] + numbers[r] > target)
+            r--;
+        if (numbers[l] + numbers[r] < target)
+            l++;
+        if(numbers[l] + numbers[r] == target)
+            return new int[] { l, r };
+    }
+    return new int[] { };
+}
+
