@@ -275,3 +275,21 @@ int RemoveDuplicates(int[] nums)
     }
     return ++k;
 }
+
+
+// 283. Move Zeroes
+// Example 1:
+// Input: nums = [0,1,0,3,12]
+// Output: [1,3,12,0,0]
+
+void MoveZeroes(int[] nums)
+{
+    for (int i = 0, j = 0; i < nums.Length; i++)
+    {
+        if (nums[i] != 0)
+        {
+            (nums[i], nums[j]) = (nums[j], nums[i]);
+            j++;
+        }
+    }
+}
