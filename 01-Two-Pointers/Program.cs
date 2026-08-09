@@ -317,3 +317,69 @@ bool IsSubsequence(string s, string t)
 
     return j == s.Length;
 }
+
+// 844. Backspace String Compare
+// Example 1:
+// Input: s = "ab#c", t = "ad#c"
+// Output: true
+// Explanation: Both s and t become "ac".
+// Example 2:
+// Input: s = "ab##", t = "c#d#"
+// Output: true
+// Explanation: Both s and t become "".
+
+bool BackspaceCompare(string s, string t)
+{
+    int countSkipS = 0;
+    int countSkipT = 0;
+    int sLen = s.Length - 1;
+    int tLen = t.Length - 1;
+
+    while (sLen >= 0 || tLen >= 0)
+    {
+
+        while (sLen >= 0)
+        {
+            if (s[sLen] == '#')
+            {
+                countSkipS++;
+                sLen--;
+            }
+            else if (countSkipS > 0)
+            {
+                countSkipS--;
+                sLen--;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        while (tLen >= 0)
+        {
+            if (t[tLen] == '#')
+            {
+                countSkipT++;
+                tLen--;
+            }
+            else if (countSkipT > 0)
+            {
+                countSkipT--;
+                tLen--;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        if (sLen >= 0 && tLen >= 0 && s[sLen] != t[tLen])
+            return false;
+
+        sLen--;
+        tLen--;
+    }
+
+    return sLen == tLen;
+}
