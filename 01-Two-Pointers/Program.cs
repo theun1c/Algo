@@ -293,3 +293,27 @@ void MoveZeroes(int[] nums)
         }
     }
 }
+
+// 392. Is Subsequence
+// Example 1:
+// Input: s = "abc", t = "ahbgdc"
+// Output: true
+//
+// Example 2:
+// Input: s = "axc", t = "ahbgdc"
+// Output: false
+
+bool IsSubsequence(string s, string t)
+{
+    int i = 0;
+    int j = 0;
+
+    while (i < t.Length && j < s.Length)
+    {
+        if (t[i] == s[j])
+            j++;
+        i++;
+    }
+
+    return j == s.Length;
+}
