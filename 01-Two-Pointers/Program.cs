@@ -383,3 +383,46 @@ bool BackspaceCompare(string s, string t)
 
     return sLen == tLen;
 }
+
+// 88. Merge Sorted Array
+// Example 1:
+// Input: nums1 = [1,2,3,0,0,0],
+// m = 3, nums2 = [2,5,6], n = 3
+// Output: [1,2,2,3,5,6]
+// Explanation: The arrays we are merging are [1,2,3] and [2,5,6].
+// The result of the merge is [1,2,2,3,5,6
+// with the underlined elements coming from nums1.
+// Example 2:
+// Input: nums1 = [1], m = 1, nums2 = [], n
+// = 0
+// Output: [1]
+
+void Merge(int[] nums1, int m, int[] nums2, int n)
+{
+    int p1 = m - 1;
+    int p2 = n - 1;
+    int resLen = n + m - 1;
+
+    while (p1 >= 0 && p2 >= 0)
+    {
+        if (nums1[p1] < nums2[p2])
+        {
+            nums1[resLen] = nums2[p2];
+            resLen--;
+            p2--;
+        }
+        else
+        {
+            nums1[resLen] = nums1[p1];
+            resLen--;
+            p1--;
+        }
+    }
+
+    while (p2 >= 0)
+    {
+        nums1[resLen] = nums2[p2];
+        p2--;
+        resLen--;
+    }
+}
