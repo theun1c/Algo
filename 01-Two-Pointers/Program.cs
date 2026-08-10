@@ -408,15 +408,14 @@ void Merge(int[] nums1, int m, int[] nums2, int n)
         if (nums1[p1] < nums2[p2])
         {
             nums1[resLen] = nums2[p2];
-            resLen--;
             p2--;
         }
         else
         {
             nums1[resLen] = nums1[p1];
-            resLen--;
             p1--;
         }
+        resLen--;
     }
 
     while (p2 >= 0)
