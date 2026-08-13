@@ -75,3 +75,41 @@ int MinSubArrayLen(int target, int[] nums)
 Console.WriteLine(MinSubArrayLen(7, [2,3,1,2,4,3]));
 Console.WriteLine(MinSubArrayLen(4, [1, 4, 4]));
 Console.WriteLine(MinSubArrayLen(11, [1,1,1,1,1,1,1,1]));
+
+// 1004. Max Consecutive Onec III
+// Example 1:
+
+// Input: nums = [1,1,1,0,0,0,1,1,1,1,0], k = 2
+// Output: 6
+// Explanation: [1,1,1,0,0,1,1,1,1,1,1]
+// Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
+
+// Example 2:
+
+// Input: nums = [0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], k = 3
+// Output: 10
+// Explanation: [0,0,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1]
+// Bolded numbers were flipped from 0 to 1. The longest subarray is underlined.
+
+int LongestOnes(int[] nums, int k)
+{
+    int begin = 0;
+    int windowState = 0;
+    int result = 0;
+
+    for(int end = 0; end < nums.Length; end++)
+    {
+        if(nums[end] == 0)
+            windowState++;
+        while(windowState > k)
+        {
+            if(nums[begin] == 0)
+                windowState--;
+            begin++;
+        }
+
+        result = int.Max(result, end - begin + 1);
+    }
+
+    return result;
+}
