@@ -113,3 +113,53 @@ int LongestOnes(int[] nums, int k)
 
     return result;
 }
+
+// 1493. Longest Subarray of 1's After Deleting One Element
+// Example 1:
+
+// Input: nums = [1,1,0,1]
+// Output: 3
+// Explanation: After deleting the number in position 2, [1,1,1] contains 3 numbers with value of 1's.
+
+// Example 2:
+
+// Input: nums = [0,1,1,1,0,1,1,0,1]
+// Output: 5
+// Explanation: After deleting the number in position 4, [0,1,1,1,1,1,0,1] longest subarray with value of 1's is [1,1,1,1,1].
+
+// Example 3:
+
+// Input: nums = [1,1,1]
+// Output: 2
+// Explanation: You must delete one element.
+
+int LongestSubarray(int[] nums)
+{
+    int begin = 0;
+    int result = 0;
+    int countZero = 0;
+    for (int end = 0; end < nums.Length; end++)
+    {
+        if (nums[end] == 0)
+        {
+            countZero++;
+        }
+
+        while (countZero > 1)
+        {
+            if (nums[begin] == 0)
+            {
+                countZero--;
+            }
+            begin++;
+        }
+
+        result = Math.Max(result, end - begin + 1);
+    }
+
+    return result - 1;
+}
+
+Console.WriteLine(LongestSubarray([1,1,0,1]));
+Console.WriteLine(LongestSubarray([0,1,1,1,0,1,1,0,1]));
+Console.WriteLine(LongestSubarray([1, 1, 1]));
